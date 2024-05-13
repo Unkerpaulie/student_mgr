@@ -4,7 +4,7 @@ Based on the tutorial at https://www.youtube.com/watch?v=EUMpUUXKvP0
 
 ## Clone this repo
 
-`git clone https://github.com/Unkerpaulie/pizarra.git`
+`git clone https://github.com/Unkerpaulie/student_mgr.git`
 
 ## setup
 
