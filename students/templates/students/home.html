@@ -40,8 +40,9 @@
                                     </button>
                                     <a class="btn btn-primary me-2" href="{% url "students:edit" student.id %}" title="Edit Student Info">
                                         <i class="fas fa-edit"></i> 
-                                    </button>
-                                    <a class="btn btn-danger me-2" href="#" title="Delete Student Record">
+                                    </a>
+                                    <button type="button" class="btn btn-danger me-2" href="#" title="Delete Student Record"
+                                    data-bs-toggle="modal" data-bs-target="#deleteStudent{{ student.id }}">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
@@ -58,7 +59,7 @@
         </div>
     </div>
     
-    <!-- modals -->
+    <!-- view modals -->
     {% for student in students %}
     <div class="modal" id="viewStudent{{ student.id }}" tabindex="-1" aria-labelledby="viewStudent{{ student.id }}Label" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -81,6 +82,32 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    <!-- delete modals -->
+    {% for student in students %}
+    <div class="modal" id="deleteStudent{{ student.id }}" tabindex="-1" aria-labelledby="deleteStudent{{ student.id }}Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Student: {{ student.first_name }} {{ student.last_name }}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <p>You will delete the student record for {{ student.first_name }} {{ student.last_name }}</p>
+            </div>
+            <div class="modal-footer">
+                <form action="{% url "students:delete" student.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Confirm</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
             </div>
           </div>
         </div>

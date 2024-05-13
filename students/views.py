@@ -51,4 +51,7 @@ def edit(req, id):
 
 
 def delete(req, id):
-    student = Student.objects.get(pk=id)
+    if req.method == "POST":
+        student = Student.objects.get(pk=id)
+        student.delete()
+        return redirect("students:home")
