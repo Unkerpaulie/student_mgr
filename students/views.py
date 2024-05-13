@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Student
@@ -36,3 +36,19 @@ def add(req):
         context = {"form": StudentForm(), "page": "add"}
     return render(req, "students/add.html", context)
         
+
+def edit(req, id):
+    student = Student.objects.get(pk=id)
+    if req.method == "POST":
+        form = StudentForm(req.POST, instance=student)
+        if form.is_valid():
+            form.save()
+
+            return redirect("students:home")
+    else:
+        context = {"form": StudentForm(instance=student)}
+        return render(req, "students/edit.html", context)
+
+
+def delete(req, id):
+    student = Student.objects.get(pk=id)

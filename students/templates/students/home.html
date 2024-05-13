@@ -38,8 +38,12 @@
                                     data-bs-toggle="modal" data-bs-target="#viewStudent{{ student.id }}" title="View Student Info">
                                         <i class="fas fa-eye"></i> 
                                     </button>
-                                    <i class="fas fa-edit"></i> 
-                                    <i class="fas fa-trash-alt"></i>
+                                    <a class="btn btn-primary me-2" href="{% url "students:edit" student.id %}" title="Edit Student Info">
+                                        <i class="fas fa-edit"></i> 
+                                    </button>
+                                    <a class="btn btn-danger me-2" href="#" title="Delete Student Record">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
                                 </td>
                               </tr>
                             {% endfor %}

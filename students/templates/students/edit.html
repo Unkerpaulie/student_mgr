@@ -1,16 +1,16 @@
 {% extends "students/base.html" %}
 
 {% block main %}
-<h3 class="text-enter m4">Add Student</h3>
+<h3 class="text-enter m4">Edit Student</h3>
 {% if success %}
 <div class="alert alert-success" role="alert">
-    New student added successfully
+    Student info updated successfully
 </div>
 {% endif %}
 <div class="row justify-content-center">
     <div class="col-6">
         <div class="card text-white bg-secondary mb-3">
-            <div class="card-header"><i class="fas fa-address-card fa-lg me-2"></i>Enter student information</div>
+            <div class="card-header"><i class="fas fa-edit fa-lg me-2"></i>Update student information</div>
             <div class="card-body">
                 <form action="" method="post">
                     {% csrf_token %}
