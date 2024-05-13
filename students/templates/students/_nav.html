@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url "students:home" %}"><i class="fas fa-graduation-cap fa-lg me-2"></i>Student Management System</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link{% if page == "home" %} active{% endif %}" href="{% url "students:home" %}"><i class="fas fa-list-ul fa-lg me-2"></i>All Students</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link{% if page == "add" %} active{% endif %}" href="{% url "students:add" %}"><i class="fas fa-plus fa-lg me-2"></i>Add Student</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
